@@ -4,16 +4,8 @@ WORKDIR /app
 
 COPY . .
 
-RUN rm -rf screenshots/
-
 RUN npm install --production
 
-RUN apk --no-cache add openssl
+EXPOSE 80
 
-RUN sh generate-cert.sh
-
-EXPOSE 80 443
-
-
-ENTRYPOINT ["node", "./index.js"]
-CMD []
+CMD ["node", "./index.js"]
